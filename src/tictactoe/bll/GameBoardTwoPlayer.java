@@ -1,20 +1,16 @@
 package tictactoe.bll;
-
 import javafx.scene.layout.GridPane;
-
 /**
  * The GameBoardTwoPlayer class is the mandatory implementation for the TicTacToe assignment.
  * It is used for games where there are two human players.
  */
 public class GameBoardTwoPlayer implements IGameModel {
-
     int playerTurn = 0; //makeing a int variable that defines the players turn
     int[][] grid = new int[3][3]; //Makeing an 2d array variable called grid
     int winner; //makeing a winner variable
     protected GameBoardTwoPlayer() {
 
     }
-
     /**
      * Returns 0 for player 0, 1 for player 1.
      *
@@ -26,7 +22,6 @@ public class GameBoardTwoPlayer implements IGameModel {
         playerTurn = (1 == playerTurn) ? 2 : 1; //choseing between player 1 and player 2
         return playerTurn; //returning the playerTurn
     }
-
     /**
      * Attempts to let the current player play at the given coordinates. It the
      * attempt is successful the current player has ended his turn and it is the
@@ -76,6 +71,22 @@ public class GameBoardTwoPlayer implements IGameModel {
             winner = playerTurn;
             return true;
         }
+        if (grid[1][0] == playerTurn && grid[1][1] == playerTurn && grid[1][2] == playerTurn) {
+            winner = playerTurn;
+            return true;
+        }
+        if (grid[2][0] == playerTurn && grid[2][1] == playerTurn && grid[2][2] == playerTurn) {
+            winner = playerTurn;
+            return true;
+        }
+        if (grid[0][1] == playerTurn && grid[1][1] == playerTurn && grid[2][1] == playerTurn) {
+            winner = playerTurn;
+            return true;
+        }
+        if (grid[0][2] == playerTurn && grid[1][2] == playerTurn && grid[2][2] == playerTurn) {
+            winner = playerTurn;
+            return true;
+        }
         return false;
     }
 
@@ -114,15 +125,4 @@ public class GameBoardTwoPlayer implements IGameModel {
         //TODO Implement this method
         return grid[row][col]; //return my 2d variable
     }
-
 }
-
-
-
-
-
-
-//sebastian er her
-//Mathias er her
-//Jens er her
-//Nyberg her
