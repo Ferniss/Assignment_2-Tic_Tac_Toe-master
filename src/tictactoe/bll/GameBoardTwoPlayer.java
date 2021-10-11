@@ -125,3 +125,4 @@ public class GameBoardTwoPlayer implements IGameModel {
 //sebastian er her
 //Mathias er her
 //Jens er her
+//Nyberg her
