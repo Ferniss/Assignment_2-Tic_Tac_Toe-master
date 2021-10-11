@@ -1,10 +1,13 @@
 package tictactoe.bll;
 import javafx.scene.layout.GridPane;
+import tictactoe.gui.model.ScoreModel;
+
 /**
  * The GameBoardTwoPlayer class is the mandatory implementation for the TicTacToe assignment.
  * It is used for games where there are two human players.
  */
 public class GameBoardTwoPlayer implements IGameModel {
+    private ScoreModel scoreModel = new ScoreModel();
     int playerTurn = 0; //makeing a int variable that defines the players turn
     int[][] grid = new int[3][3]; //Makeing an 2d array variable called grid
     int winner; //makeing a winner variable
@@ -100,7 +103,6 @@ public class GameBoardTwoPlayer implements IGameModel {
         //TODO Implement this method
         //*******
         if(winner == playerTurn){
-
         }
         return winner;
     }
