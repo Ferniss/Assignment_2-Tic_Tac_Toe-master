@@ -123,6 +123,29 @@ public class GameBoardTwoPlayer implements IGameModel {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //Mathias er her
 //Jens er her
 //Nyberg her
