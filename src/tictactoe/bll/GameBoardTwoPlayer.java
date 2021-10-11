@@ -2,6 +2,8 @@ package tictactoe.bll;
 import javafx.scene.layout.GridPane;
 import tictactoe.gui.model.ScoreModel;
 
+import java.util.Arrays;
+
 /**
  * The GameBoardTwoPlayer class is the mandatory implementation for the TicTacToe assignment.
  * It is used for games where there are two human players.
@@ -42,8 +44,8 @@ public class GameBoardTwoPlayer implements IGameModel {
             return false;
         }
         //makeing an if statement with grid 2d array should be = to playerTurn
-        if(grid[row][col] == 0){
-           grid[row][col] = playerTurn;
+        if(grid[col][row] == 0){
+           grid[col][row] = playerTurn;
            return true;
         }
            return false;
@@ -104,6 +106,7 @@ public class GameBoardTwoPlayer implements IGameModel {
         //*******
         if(winner == playerTurn){
         }
+
         return winner;
     }
 
@@ -113,6 +116,14 @@ public class GameBoardTwoPlayer implements IGameModel {
     @Override
     public void newGame() {
         //TODO Implement this method
+        playerTurn = 0;
+        for(int i = 0; i < grid.length; i++){
+            for(int j = 0; j < grid[0].length; j++)
+            {
+                grid[i][j] = -1;
+            }
+            grid = new int[3][3];
+        }
     }
 
     /**
@@ -125,7 +136,7 @@ public class GameBoardTwoPlayer implements IGameModel {
     @Override
     public int getPlayerAt(int col, int row) {
         //TODO Implement this method
-        return grid[row][col]; //return my 2d variable
+        return grid[col][row]; //return my 2d variable
     }
 
 }
