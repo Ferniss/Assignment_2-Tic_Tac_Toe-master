@@ -9,7 +9,19 @@ and open the template in the editor.
 */
 
 #pane {
-    -fx-background-image: url(../images/background.jpg);
+    /*-fx-background-image: url(../images/background.jpg);*/
+
+    /*-fx-background-color: #cc8800;*/
+    /*-fx-background-image: url(http://www.transparenttextures.com/patterns/wood-pattern.png);*/
     -fx-background-repeat: stretch;   
     -fx-background-position: center;
+}
+BorderPane{
+   /* -fx-background-color: #725c42;*/
+}
+
+.test{
+    -fx-text-fill: red;
+    -fx-font-size: 3em;
+    -fx-text-alignment: center;
 }
