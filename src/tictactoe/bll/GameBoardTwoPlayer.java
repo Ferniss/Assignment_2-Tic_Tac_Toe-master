@@ -10,7 +10,7 @@ public class GameBoardTwoPlayer implements IGameModel {
 
     int playerTurn = 0; //makeing a int variable that defines the players turn
     int[][] grid = new int[3][3]; //Makeing an 2d array variable called grid
-    int winner;
+    int winner; //makeing a winner variable
     protected GameBoardTwoPlayer() {
 
     }
@@ -59,6 +59,7 @@ public class GameBoardTwoPlayer implements IGameModel {
     @Override
     public boolean isGameOver() {
         //TODO Implement this method
+        //In these if statments i am using the 2d array to chose which fields you can win on
         if (grid[0][0] == playerTurn && grid[1][1] == playerTurn && grid[2][2] == playerTurn ) {
             winner = playerTurn;
             return true;
@@ -86,6 +87,7 @@ public class GameBoardTwoPlayer implements IGameModel {
     @Override
     public int getWinner() {
         //TODO Implement this method
+        //*******
         if(winner == playerTurn){
 
         }
