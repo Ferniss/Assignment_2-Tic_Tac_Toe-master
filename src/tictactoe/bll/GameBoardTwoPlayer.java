@@ -116,3 +116,4 @@ public class GameBoardTwoPlayer implements IGameModel {
     }
 
 }
+//Jens er her
