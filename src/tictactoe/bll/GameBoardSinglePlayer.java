@@ -24,7 +24,8 @@ public class GameBoardSinglePlayer implements IGameModel {
     @Override
     public int getNextPlayer() {
         //TODO Implement this method
-
+        int randomNum = (int)(Math.random() * 10);
+        System.out.println(randomNum);
         playerTurn = (1 == playerTurn) ? 2 : 1; //choseing between player 1 and player 2
         return playerTurn; //returning the playerTurn
     }
