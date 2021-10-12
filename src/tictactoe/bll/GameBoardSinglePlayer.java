@@ -1,5 +1,6 @@
 package tictactoe.bll;
-
+import java.util.ArrayList;
+import java.util.Random;
 import tictactoe.gui.model.ScoreModel;
 
 /**
