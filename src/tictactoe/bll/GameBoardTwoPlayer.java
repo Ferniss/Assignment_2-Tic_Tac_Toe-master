@@ -1,8 +1,5 @@
 package tictactoe.bll;
-import javafx.scene.layout.GridPane;
 import tictactoe.gui.model.ScoreModel;
-
-import java.util.Arrays;
 
 /**
  * The GameBoardTwoPlayer class is the mandatory implementation for the TicTacToe assignment.
@@ -10,6 +7,7 @@ import java.util.Arrays;
  */
 public class GameBoardTwoPlayer implements IGameModel {
     private ScoreModel scoreModel = new ScoreModel();
+
     int playerTurn = 0; //makeing a int variable that defines the players turn
     int[][] grid = new int[3][3]; //Makeing an 2d array variable called grid
     int winner; //makeing a winner variable
@@ -137,6 +135,18 @@ public class GameBoardTwoPlayer implements IGameModel {
     public int getPlayerAt(int col, int row) {
         //TODO Implement this method
         return grid[col][row]; //return my 2d variable
+    }
+
+    @Override
+    public void choicePlayMode() {
+        playerTurn = 0;
+        for(int i = 0; i < grid.length; i++){
+            for(int j = 0; j < grid[0].length; j++)
+            {
+                grid[i][j] = -1;
+            }
+            grid = new int[3][3];
+        }
     }
 
 }

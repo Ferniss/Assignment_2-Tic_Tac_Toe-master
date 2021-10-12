@@ -126,6 +126,7 @@ public class TicTacViewController implements Initializable {
     private void handleNewGame(ActionEvent event) {
         if (currentGameMode == choicePlayMode.getSelectionModel().getSelectedItem()) {
             game.newGame();
+            game.choicePlayMode();
         } else {
             currentGameMode = choicePlayMode.getSelectionModel().getSelectedItem();
             game = GameBoardFactory.getGameModel(currentGameMode);

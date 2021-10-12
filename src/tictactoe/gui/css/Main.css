@@ -9,19 +9,16 @@ and open the template in the editor.
 */
 
 #pane {
-    /*-fx-background-image: url(../images/background.jpg);*/
+    -fx-background-image: url(../images/wood.jpeg);
+    background-repeat: no-repeat;
+    background-size: 300px 100px;
 
-    /*-fx-background-color: #cc8800;*/
-    /*-fx-background-image: url(http://www.transparenttextures.com/patterns/wood-pattern.png);*/
-    -fx-background-repeat: stretch;   
-    -fx-background-position: center;
-}
-BorderPane{
-   /* -fx-background-color: #725c42;*/
 }
 
 .test{
     -fx-text-fill: red;
-    -fx-font-size: 3em;
+    -fx-font-size: 2em;
     -fx-text-alignment: center;
+    -fx-background-color: green;
+    -fx-width: 1px;
 }

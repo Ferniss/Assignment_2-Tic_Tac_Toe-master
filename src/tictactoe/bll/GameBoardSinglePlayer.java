@@ -1,11 +1,17 @@
 package tictactoe.bll;
 
+import tictactoe.gui.model.ScoreModel;
+
 /**
  * The GameBoardSinglePlayer class is the optional and advanced implementation for the TicTacToe assignment.
  * It is used for games where there are one human player vs. a computer player.
  */
 public class GameBoardSinglePlayer implements IGameModel {
+    private ScoreModel scoreModel = new ScoreModel();
 
+    int playerTurn = 0; //makeing a int variable that defines the players turn
+    int[][] grid = new int[3][3]; //Makeing an 2d array variable called grid
+    int winner; //makeing a winner variable
     protected GameBoardSinglePlayer() {
 
     }
@@ -18,7 +24,9 @@ public class GameBoardSinglePlayer implements IGameModel {
     @Override
     public int getNextPlayer() {
         //TODO Implement this method
-        return 0;
+
+        playerTurn = (1 == playerTurn) ? 2 : 1; //choseing between player 1 and player 2
+        return playerTurn; //returning the playerTurn
     }
 
     /**
@@ -34,6 +42,14 @@ public class GameBoardSinglePlayer implements IGameModel {
     @Override
     public boolean play(int col, int row) {
         //TODO Implement this method
+        if (isGameOver()){
+            return false;
+        }
+        //makeing an if statement with grid 2d array should be = to playerTurn
+        if(grid[col][row] == 0){
+            grid[col][row] = playerTurn;
+            return true;
+        }
         return false;
     }
 
@@ -46,6 +62,38 @@ public class GameBoardSinglePlayer implements IGameModel {
     @Override
     public boolean isGameOver() {
         //TODO Implement this method
+        if (grid[0][0] == playerTurn && grid[1][1] == playerTurn && grid[2][2] == playerTurn ) {
+            winner = playerTurn;
+            return true;
+        }
+        if (grid[0][0] == playerTurn && grid[0][1] == playerTurn && grid[0][2] == playerTurn ) {
+            winner = playerTurn;
+            return true;
+        }
+        if (grid[0][2] == playerTurn && grid[1][1] == playerTurn && grid[2][0] == playerTurn ) {
+            winner = playerTurn;
+            return true;
+        }
+        if (grid[0][0] == playerTurn && grid[1][0] == playerTurn && grid[2][0] == playerTurn ) {
+            winner = playerTurn;
+            return true;
+        }
+        if (grid[1][0] == playerTurn && grid[1][1] == playerTurn && grid[1][2] == playerTurn) {
+            winner = playerTurn;
+            return true;
+        }
+        if (grid[2][0] == playerTurn && grid[2][1] == playerTurn && grid[2][2] == playerTurn) {
+            winner = playerTurn;
+            return true;
+        }
+        if (grid[0][1] == playerTurn && grid[1][1] == playerTurn && grid[2][1] == playerTurn) {
+            winner = playerTurn;
+            return true;
+        }
+        if (grid[0][2] == playerTurn && grid[1][2] == playerTurn && grid[2][2] == playerTurn) {
+            winner = playerTurn;
+            return true;
+        }
         return false;
     }
 
@@ -57,7 +105,11 @@ public class GameBoardSinglePlayer implements IGameModel {
     @Override
     public int getWinner() {
         //TODO Implement this method
-        return 0;
+        if(winner == playerTurn){
+        }
+
+        return winner;
+
     }
 
     /**
@@ -66,6 +118,14 @@ public class GameBoardSinglePlayer implements IGameModel {
     @Override
     public void newGame() {
         //TODO Implement this method
+        playerTurn = 0;
+        for(int i = 0; i < grid.length; i++){
+            for(int j = 0; j < grid[0].length; j++)
+            {
+                grid[i][j] = -1;
+            }
+            grid = new int[3][3];
+        }
     }
 
     /**
@@ -78,6 +138,18 @@ public class GameBoardSinglePlayer implements IGameModel {
     @Override
     public int getPlayerAt(int col, int row) {
         //TODO Implement this method
-        return -1;
+        return grid[col][row]; //return my 2d variable
+    }
+
+    @Override
+    public void choicePlayMode() {
+        playerTurn = 0;
+        for(int i = 0; i < grid.length; i++){
+            for(int j = 0; j < grid[0].length; j++)
+            {
+                grid[i][j] = -1;
+            }
+            grid = new int[3][3];
+        }
     }
 }

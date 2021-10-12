@@ -54,7 +54,7 @@
             <BorderPane.margin>
                 <Insets top="10.0"/>
             </BorderPane.margin>
-            <ChoiceBox fx:id="choicePlayMode" prefWidth="150.0"/>
+            <ChoiceBox onAction="#handleNewGame" fx:id="choicePlayMode" prefWidth="150.0"/>
             <Label maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS"/>
             <Button fx:id="btnNewGame" mnemonicParsing="false" onAction="#handleNewGame" text="New Game"/>
         </HBox>
