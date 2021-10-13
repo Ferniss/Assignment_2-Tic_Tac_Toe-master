@@ -6,7 +6,6 @@ public class GameBoardFactory {
         return switch (gameMode) {
             case SINGLE_PLAYER -> new GameBoardSinglePlayer();
             case TWO_PLAYERS -> new GameBoardTwoPlayer();
-
         };
     }
 
@@ -17,8 +16,7 @@ public class GameBoardFactory {
         public String toString() {
             return switch (this) {
                 case TWO_PLAYERS -> "Two players";
-
-                case SINGLE_PLAYER -> "Single player Level 1";
+                case SINGLE_PLAYER -> "Single player level 1";
             };
         }
     }

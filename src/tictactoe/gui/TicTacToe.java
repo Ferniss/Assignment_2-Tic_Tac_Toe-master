@@ -11,6 +11,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 /**
  *
  * @author Stegger
@@ -26,11 +28,17 @@ public class TicTacToe extends Application
         Scene scene = new Scene(root);
         
         stage.setScene(scene);
-        stage.setResizable(false);
+        stage.setResizable(true);
         stage.setTitle("Tic Tac Toe");
         stage.centerOnScreen();
         
         stage.show();
+
+        openNewWindow();
+    }
+
+    private void openNewWindow() {
+
     }
 
     /**

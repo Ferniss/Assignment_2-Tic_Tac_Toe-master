@@ -148,6 +148,16 @@ public class GameBoardTwoPlayer implements IGameModel {
             grid = new int[3][3];
         }
     }
+
+    @Override
+    public int getScoreSinglePlayer1() {
+        return 0;
+    }
+
+    @Override
+    public int getLevelSinglePlayer1() {
+        return 0;
+    }
 }
 
 

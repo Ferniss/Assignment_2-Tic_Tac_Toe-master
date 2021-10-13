@@ -16,9 +16,17 @@ and open the template in the editor.
 }
 
 .test{
-    -fx-text-fill: red;
     -fx-font-size: 2em;
     -fx-text-alignment: center;
     -fx-background-color: green;
     -fx-width: 1px;
+}
+.red{
+    -fx-text-fill: red;
+}
+.yellow{
+    -fx-text-fill: yellow;
+}
+#test1{
+    -fx-text-fill: red;
 }

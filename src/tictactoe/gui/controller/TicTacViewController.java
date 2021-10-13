@@ -14,8 +14,10 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.GridPane;
+import tictactoe.Models.StyleModel;
 import tictactoe.bll.GameBoardFactory;
 import tictactoe.bll.IGameModel;
+import tictactoe.gui.ShopClass;
 import tictactoe.gui.model.ScoreModel;
 
 import java.net.URL;
@@ -25,6 +27,8 @@ import java.util.ResourceBundle;
  * @author Stegger
  */
 public class TicTacViewController implements Initializable {
+    public Label scorePl1;
+    public Label levelPl1;
     @FXML
     private ChoiceBox<GameBoardFactory.GAME_MODE> choicePlayMode;
 
@@ -40,6 +44,7 @@ public class TicTacViewController implements Initializable {
     @FXML
     private GridPane gridPane;
 
+
     /**
      * The prefix text that is shown before the actual player who's turn it is.
      */
@@ -48,12 +53,18 @@ public class TicTacViewController implements Initializable {
     private GameBoardFactory.GAME_MODE currentGameMode;
     private IGameModel game;
     private ScoreModel scoreModel;
+    private StyleModel styleModel;
 
     /**
      * Initialize method is called at construction time AFTER the constructor is called, and after all GUI controls are created.
      */
+    public TicTacViewController()
+    {
+        gridPane = new GridPane();
+    }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        styleModel = new StyleModel();
         scoreModel = new ScoreModel();
         lstScores.setItems(scoreModel.getWinners());
         choicePlayMode.getItems().addAll(GameBoardFactory.GAME_MODE.values());
@@ -62,6 +73,8 @@ public class TicTacViewController implements Initializable {
 
         game = GameBoardFactory.getGameModel(currentGameMode);
         setPlayer();
+        scorePl1.setText("score is" + game.getScoreSinglePlayer1());
+        levelPl1.setText("level is" + game.getScoreSinglePlayer1());
     }
 
     /**
@@ -71,6 +84,7 @@ public class TicTacViewController implements Initializable {
      */
     @FXML
     private void handleButtonAction(ActionEvent event) {
+        updateGameBoardButtons();
         try {
 
             Integer row = GridPane.getRowIndex((Node) event.getSource());
@@ -90,6 +104,10 @@ public class TicTacViewController implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public GridPane getGridPane() {
+        return gridPane;
     }
 
     /**
@@ -112,6 +130,16 @@ public class TicTacViewController implements Initializable {
             if (player != 0) {
                 String xOrO = player == 1 ? "X" : "O"; //changed the number from 0 to 1
                 btn.setText(xOrO);
+                if (styleModel.isButtonsAreRed()){
+                    btn.getStyleClass().remove("yellow");
+                    btn.getStyleClass().add("red");
+                }
+                if (styleModel.isButtonsAreYellow()){
+                    btn.getStyleClass().add("yellow");
+                    btn.getStyleClass().remove("red");
+                }
+
+
             }
 
         }
@@ -149,12 +177,14 @@ public class TicTacViewController implements Initializable {
      */
     private void displayWinner(int winner) {
         String message;
-        if (winner == -1) {
+        if (winner == 0) {
             message = "It's a draw :-(";
         } else {
             message = "Player " + winner + " wins!!!";
         }
         lblPlayer.setText(message);
+        scorePl1.setText("score is" + game.getScoreSinglePlayer1());
+        levelPl1.setText("level is" + game.getLevelSinglePlayer1());
     }
 
     /**
@@ -165,5 +195,10 @@ public class TicTacViewController implements Initializable {
             Button btn = (Button) n;
             btn.setText("");
         }
+    }
+
+    public void openShop(ActionEvent actionEvent) {
+        ShopClass shop = new ShopClass(styleModel);
+        shop.OpenShop();
     }
 }

@@ -9,17 +9,25 @@ import tictactoe.gui.model.ScoreModel;
  */
 public class GameBoardSinglePlayer implements IGameModel {
     private ScoreModel scoreModel = new ScoreModel();
-
-    int playerTurn = 0; //makeing a int variable that defines the players turn
+    int counterGameOver = 0;
+    int playerTurn = 1; //makeing a int variable that defines the players turn
     int[][] grid = new int[3][3]; //Makeing an 2d array variable called grid
     int winner; //makeing a winner variable
-    int counterGameOver = 0;
 
-    public int levelSingleplayer1 = 0;
+    @Override
+    public int getScoreSinglePlayer1() {
+        return scoreSinglePlayer1;
+    }
+
+    public int getLevelSinglePlayer1() {
+        return levelSinglePlayer1;
+    }
+    public int levelSinglePlayer1 = 0;
     public int scoreSinglePlayer1 = 0;
     protected GameBoardSinglePlayer() {
 
     }
+
 
     /**
      * Returns 0 for player 0, 1 for player 1.
@@ -29,9 +37,7 @@ public class GameBoardSinglePlayer implements IGameModel {
     @Override
     public int getNextPlayer() {
         //TODO Implement this method
-
         playerTurn = (1 == playerTurn) ? 2 : 1; //choseing between player 1 and player 2
-      //  AI();
         return playerTurn; //returning the playerTurn
     }
 
@@ -52,46 +58,26 @@ public class GameBoardSinglePlayer implements IGameModel {
         boolean whileCondition = true;
         boolean canPlay;
         if (grid[col][row] == 0 && !isGameOver()) {
-            grid[col][row] = -1;
+            grid[col][row] = 1;
             counterGameOver++;
             canPlay = true;
-
         } else {
             canPlay = false;
-
         }
+
         while (whileCondition && canPlay && !isGameOver() ) {
-            getNextPlayer();
             Random randInt = new Random();
             AICol = randInt.nextInt(3);
             AIRow = randInt.nextInt(3);
             if (grid[AICol][AIRow] == 0) {
-                grid[AICol][AIRow] = 1;
+                grid[AICol][AIRow] = 2;
                 counterGameOver++;
                 whileCondition = false;
             }
-
         }
+        getNextPlayer();
         return canPlay;
     }
-
-
-
-
-
-
-
-
-        //     if (isGameOver()) {
-     //       return false;
-      //  }
-        //makeing an if statement with grid 2d array should be = to playerTurn
-        //if (grid[col][row] == 0) {
-          //  grid[col][row] = playerTurn;
-            //return true;
-        //}
-       // return false;
-    //}
 
     /**
      * Tells us if the game has ended either by draw or by meeting the winning
@@ -102,36 +88,68 @@ public class GameBoardSinglePlayer implements IGameModel {
     @Override
     public boolean isGameOver() {
         //TODO Implement this method
-        if (grid[0][0] == playerTurn && grid[1][1] == playerTurn && grid[2][2] == playerTurn) {
+        if (grid[0][0] == playerTurn && grid[1][1] == playerTurn && grid[2][2] == playerTurn ) {
             winner = playerTurn;
+            if (playerTurn == 1){
+                scoreSinglePlayer1 ++;
+                levelSinglePlayer1 ++;
+            }
             return true;
         }
-        if (grid[0][0] == playerTurn && grid[0][1] == playerTurn && grid[0][2] == playerTurn) {
+        if (grid[0][0] == playerTurn && grid[0][1] == playerTurn && grid[0][2] == playerTurn ) {
             winner = playerTurn;
+            if (playerTurn == 1){
+                scoreSinglePlayer1 ++;
+                levelSinglePlayer1 ++;
+            }
             return true;
         }
-        if (grid[0][2] == playerTurn && grid[1][1] == playerTurn && grid[2][0] == playerTurn) {
+        if (grid[0][2] == playerTurn && grid[1][1] == playerTurn && grid[2][0] == playerTurn ) {
             winner = playerTurn;
+            if (playerTurn == 1){
+                scoreSinglePlayer1 ++;
+                levelSinglePlayer1 ++;
+            }
             return true;
         }
-        if (grid[0][0] == playerTurn && grid[1][0] == playerTurn && grid[2][0] == playerTurn) {
+        if (grid[0][0] == playerTurn && grid[1][0] == playerTurn && grid[2][0] == playerTurn ) {
             winner = playerTurn;
+            if (playerTurn == 1){
+                scoreSinglePlayer1 ++;
+                levelSinglePlayer1 ++;
+            }
             return true;
         }
         if (grid[1][0] == playerTurn && grid[1][1] == playerTurn && grid[1][2] == playerTurn) {
             winner = playerTurn;
+            if (playerTurn == 1){
+                scoreSinglePlayer1 ++;
+                levelSinglePlayer1 ++;
+            }
             return true;
         }
         if (grid[2][0] == playerTurn && grid[2][1] == playerTurn && grid[2][2] == playerTurn) {
             winner = playerTurn;
+            if (playerTurn == 1){
+                scoreSinglePlayer1 ++;
+                levelSinglePlayer1 ++;
+            }
             return true;
         }
         if (grid[0][1] == playerTurn && grid[1][1] == playerTurn && grid[2][1] == playerTurn) {
             winner = playerTurn;
+            if (playerTurn == 1){
+                scoreSinglePlayer1 ++;
+                levelSinglePlayer1 ++;
+            }
             return true;
         }
         if (grid[0][2] == playerTurn && grid[1][2] == playerTurn && grid[2][2] == playerTurn) {
             winner = playerTurn;
+            if (playerTurn == 1){
+                scoreSinglePlayer1 ++;
+                levelSinglePlayer1 ++;
+            }
             return true;
         }
         if (counterGameOver == 9){
@@ -148,7 +166,7 @@ public class GameBoardSinglePlayer implements IGameModel {
     @Override
     public int getWinner() {
         //TODO Implement this method
-        if (winner == playerTurn) {
+        if(winner == playerTurn){
         }
 
         return winner;
@@ -161,15 +179,15 @@ public class GameBoardSinglePlayer implements IGameModel {
     @Override
     public void newGame() {
         //TODO Implement this method
-        playerTurn = 0;
-            for (int i = 0; i < grid.length; i++) {
-                for (int j = 0; j < grid[0].length; j++) {
-                grid[i][j] = -1;
+        playerTurn = 1;
+        winner = 0;
+        counterGameOver = 0;
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[0].length; j++) {
+                grid[i][j] = 0;
             }
-
-
         }
-
+        System.out.println(grid[0][0]);
     }
 
     /**
@@ -187,25 +205,13 @@ public class GameBoardSinglePlayer implements IGameModel {
 
     @Override
     public void choicePlayMode() {
-        playerTurn = 0;
-        for (int i = 0; i < grid.length; i++) {
-            for (int j = 0; j < grid[0].length; j++) {
-                grid[i][j] = -1;
+        playerTurn = 1;
+        for(int i = 0; i < grid.length; i++){
+            for(int j = 0; j < grid[0].length; j++)
+            {
+                grid[i][j] = 0;
             }
-            grid = new int[3][3];
         }
+        System.out.println(grid);
     }
-
-    @Override
-    public int getScoreSinglePlayer1() {
-        return scoreSinglePlayer1;
-    }
-
-    @Override
-    public int getLevelSinglePlayer1() {
-        return levelSingleplayer1;
-    }
-
 }
-
-
