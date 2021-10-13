@@ -1,7 +1,6 @@
 package tictactoe.gui.model;
 
 import org.junit.jupiter.api.Test;
-import org.testng.annotations.Test;
 import org.junit.jupiter.api.Assertions;
 
 class ScoreModelTest {
