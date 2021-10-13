@@ -15,6 +15,8 @@ public class GameBoardSinglePlayer implements IGameModel {
     int winner; //makeing a winner variable
     int counterGameOver = 0;
 
+    public int levelSingleplayer1 = 0;
+    public int scoreSinglePlayer1 = 0;
     protected GameBoardSinglePlayer() {
 
     }
@@ -194,16 +196,16 @@ public class GameBoardSinglePlayer implements IGameModel {
         }
     }
 
-    public void AI() {
-        if (!isGameOver()) {
-            Random randIntR = new Random();
-            int col = randIntR.nextInt(3);
-            int row = randIntR.nextInt(3);
-            play(col, row);
-
-        }
-        playerTurn = 2;
+    @Override
+    public int getScoreSinglePlayer1() {
+        return scoreSinglePlayer1;
     }
+
+    @Override
+    public int getLevelSinglePlayer1() {
+        return levelSingleplayer1;
+    }
+
 }
 
 
