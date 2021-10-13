@@ -13,6 +13,7 @@ public class GameBoardSinglePlayer implements IGameModel {
     int playerTurn = 0; //makeing a int variable that defines the players turn
     int[][] grid = new int[3][3]; //Makeing an 2d array variable called grid
     int winner; //makeing a winner variable
+
     protected GameBoardSinglePlayer() {
 
     }
@@ -28,6 +29,7 @@ public class GameBoardSinglePlayer implements IGameModel {
         int randomNum = (int)(Math.random() * 10);
         System.out.println(randomNum);
         playerTurn = (1 == playerTurn) ? 2 : 1; //choseing between player 1 and player 2
+        AI();
         return playerTurn; //returning the playerTurn
     }
 
@@ -44,11 +46,11 @@ public class GameBoardSinglePlayer implements IGameModel {
     @Override
     public boolean play(int col, int row) {
         //TODO Implement this method
-        if (isGameOver()){
+        if (isGameOver()) {
             return false;
         }
         //makeing an if statement with grid 2d array should be = to playerTurn
-        if(grid[col][row] == 0){
+        if (grid[col][row] == 0) {
             grid[col][row] = playerTurn;
             return true;
         }
@@ -64,19 +66,19 @@ public class GameBoardSinglePlayer implements IGameModel {
     @Override
     public boolean isGameOver() {
         //TODO Implement this method
-        if (grid[0][0] == playerTurn && grid[1][1] == playerTurn && grid[2][2] == playerTurn ) {
+        if (grid[0][0] == playerTurn && grid[1][1] == playerTurn && grid[2][2] == playerTurn) {
             winner = playerTurn;
             return true;
         }
-        if (grid[0][0] == playerTurn && grid[0][1] == playerTurn && grid[0][2] == playerTurn ) {
+        if (grid[0][0] == playerTurn && grid[0][1] == playerTurn && grid[0][2] == playerTurn) {
             winner = playerTurn;
             return true;
         }
-        if (grid[0][2] == playerTurn && grid[1][1] == playerTurn && grid[2][0] == playerTurn ) {
+        if (grid[0][2] == playerTurn && grid[1][1] == playerTurn && grid[2][0] == playerTurn) {
             winner = playerTurn;
             return true;
         }
-        if (grid[0][0] == playerTurn && grid[1][0] == playerTurn && grid[2][0] == playerTurn ) {
+        if (grid[0][0] == playerTurn && grid[1][0] == playerTurn && grid[2][0] == playerTurn) {
             winner = playerTurn;
             return true;
         }
@@ -107,7 +109,7 @@ public class GameBoardSinglePlayer implements IGameModel {
     @Override
     public int getWinner() {
         //TODO Implement this method
-        if(winner == playerTurn){
+        if (winner == playerTurn) {
         }
 
         return winner;
@@ -121,9 +123,8 @@ public class GameBoardSinglePlayer implements IGameModel {
     public void newGame() {
         //TODO Implement this method
         playerTurn = 0;
-        for(int i = 0; i < grid.length; i++){
-            for(int j = 0; j < grid[0].length; j++)
-            {
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[0].length; j++) {
                 grid[i][j] = -1;
             }
             grid = new int[3][3];
@@ -146,12 +147,23 @@ public class GameBoardSinglePlayer implements IGameModel {
     @Override
     public void choicePlayMode() {
         playerTurn = 0;
-        for(int i = 0; i < grid.length; i++){
-            for(int j = 0; j < grid[0].length; j++)
-            {
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[0].length; j++) {
                 grid[i][j] = -1;
             }
             grid = new int[3][3];
+        }
+    }
+
+    public void AI() {
+        if (!isGameOver()) {
+            Random randIntR = new Random();
+            int col = randIntR.nextInt(3);
+            int row = randIntR.nextInt(3);
+            if(play(col, row)){
+                getPlayerAt(col, row);
+            }
+            playerTurn = 2;
         }
     }
 }
