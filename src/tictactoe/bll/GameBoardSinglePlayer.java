@@ -13,6 +13,7 @@ public class GameBoardSinglePlayer implements IGameModel {
     int playerTurn = 0; //makeing a int variable that defines the players turn
     int[][] grid = new int[3][3]; //Makeing an 2d array variable called grid
     int winner; //makeing a winner variable
+    int counterGameOver = 0;
 
     protected GameBoardSinglePlayer() {
 
@@ -26,10 +27,9 @@ public class GameBoardSinglePlayer implements IGameModel {
     @Override
     public int getNextPlayer() {
         //TODO Implement this method
-        int randomNum = (int)(Math.random() * 10);
-        System.out.println(randomNum);
+
         playerTurn = (1 == playerTurn) ? 2 : 1; //choseing between player 1 and player 2
-        AI();
+      //  AI();
         return playerTurn; //returning the playerTurn
     }
 
@@ -46,16 +46,50 @@ public class GameBoardSinglePlayer implements IGameModel {
     @Override
     public boolean play(int col, int row) {
         //TODO Implement this method
-        if (isGameOver()) {
-            return false;
+        int AICol, AIRow;
+        boolean whileCondition = true;
+        boolean canPlay;
+        if (grid[col][row] == 0 && !isGameOver()) {
+            grid[col][row] = -1;
+            counterGameOver++;
+            canPlay = true;
+
+        } else {
+            canPlay = false;
+
         }
-        //makeing an if statement with grid 2d array should be = to playerTurn
-        if (grid[col][row] == 0) {
-            grid[col][row] = playerTurn;
-            return true;
+        while (whileCondition && canPlay && !isGameOver() ) {
+            getNextPlayer();
+            Random randInt = new Random();
+            AICol = randInt.nextInt(3);
+            AIRow = randInt.nextInt(3);
+            if (grid[AICol][AIRow] == 0) {
+                grid[AICol][AIRow] = 1;
+                counterGameOver++;
+                whileCondition = false;
+            }
+
         }
-        return false;
+        return canPlay;
     }
+
+
+
+
+
+
+
+
+        //     if (isGameOver()) {
+     //       return false;
+      //  }
+        //makeing an if statement with grid 2d array should be = to playerTurn
+        //if (grid[col][row] == 0) {
+          //  grid[col][row] = playerTurn;
+            //return true;
+        //}
+       // return false;
+    //}
 
     /**
      * Tells us if the game has ended either by draw or by meeting the winning
@@ -98,6 +132,9 @@ public class GameBoardSinglePlayer implements IGameModel {
             winner = playerTurn;
             return true;
         }
+        if (counterGameOver == 9){
+            return true;
+        }
         return false;
     }
 
@@ -123,12 +160,14 @@ public class GameBoardSinglePlayer implements IGameModel {
     public void newGame() {
         //TODO Implement this method
         playerTurn = 0;
-        for (int i = 0; i < grid.length; i++) {
-            for (int j = 0; j < grid[0].length; j++) {
+            for (int i = 0; i < grid.length; i++) {
+                for (int j = 0; j < grid[0].length; j++) {
                 grid[i][j] = -1;
             }
-            grid = new int[3][3];
+
+
         }
+
     }
 
     /**
@@ -160,10 +199,11 @@ public class GameBoardSinglePlayer implements IGameModel {
             Random randIntR = new Random();
             int col = randIntR.nextInt(3);
             int row = randIntR.nextInt(3);
-            if(play(col, row)){
-                getPlayerAt(col, row);
-            }
-            playerTurn = 2;
+            play(col, row);
+
         }
+        playerTurn = 2;
     }
 }
+
+
