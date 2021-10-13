@@ -16,6 +16,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.GridPane;
 import tictactoe.bll.GameBoardFactory;
 import tictactoe.bll.IGameModel;
+import tictactoe.gui.ShopClass;
 import tictactoe.gui.model.ScoreModel;
 
 import java.net.URL;
@@ -25,6 +26,8 @@ import java.util.ResourceBundle;
  * @author Stegger
  */
 public class TicTacViewController implements Initializable {
+    public Label scorePl1;
+    public Label levelPl1;
     @FXML
     private ChoiceBox<GameBoardFactory.GAME_MODE> choicePlayMode;
 
@@ -40,6 +43,7 @@ public class TicTacViewController implements Initializable {
     @FXML
     private GridPane gridPane;
 
+
     /**
      * The prefix text that is shown before the actual player who's turn it is.
      */
@@ -52,6 +56,10 @@ public class TicTacViewController implements Initializable {
     /**
      * Initialize method is called at construction time AFTER the constructor is called, and after all GUI controls are created.
      */
+    public TicTacViewController()
+    {
+        gridPane = new GridPane();
+    }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         scoreModel = new ScoreModel();
@@ -62,6 +70,8 @@ public class TicTacViewController implements Initializable {
 
         game = GameBoardFactory.getGameModel(currentGameMode);
         setPlayer();
+        scorePl1.setText("score is" + game.getScoreSinglePlayer1());
+        levelPl1.setText("level is" + game.getScoreSinglePlayer1());
     }
 
     /**
@@ -92,6 +102,10 @@ public class TicTacViewController implements Initializable {
         }
     }
 
+    public GridPane getGridPane() {
+        return gridPane;
+    }
+
     /**
      * This method will update the user interface buy asking the GameBoard for who have played the individual field.
      * This is necessary when playing the single player game.
@@ -112,6 +126,8 @@ public class TicTacViewController implements Initializable {
             if (player != 0) {
                 String xOrO = player == 1 ? "X" : "O"; //changed the number from 0 to 1
                 btn.setText(xOrO);
+                //btn.getStyleClass().add("red");
+
             }
 
         }
@@ -155,6 +171,8 @@ public class TicTacViewController implements Initializable {
             message = "Player " + winner + " wins!!!";
         }
         lblPlayer.setText(message);
+        scorePl1.setText("score is" + game.getScoreSinglePlayer1());
+        levelPl1.setText("level is" + game.getLevelSinglePlayer1());
     }
 
     /**
@@ -165,5 +183,10 @@ public class TicTacViewController implements Initializable {
             Button btn = (Button) n;
             btn.setText("");
         }
+    }
+
+    public void openShop(ActionEvent actionEvent) {
+        ShopClass shop = new ShopClass();
+        shop.OpenShop();
     }
 }
