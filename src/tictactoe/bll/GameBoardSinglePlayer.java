@@ -60,11 +60,13 @@ public class GameBoardSinglePlayer implements IGameModel {
         if (grid[col][row] == 0 && !isGameOver()) {
             grid[col][row] = 1;
             counterGameOver++;
+            getNextPlayer();
             canPlay = true;
         } else {
+            getNextPlayer();
             canPlay = false;
-        }
 
+        }
         while (whileCondition && canPlay && !isGameOver() ) {
             Random randInt = new Random();
             AICol = randInt.nextInt(3);
@@ -73,9 +75,11 @@ public class GameBoardSinglePlayer implements IGameModel {
                 grid[AICol][AIRow] = 2;
                 counterGameOver++;
                 whileCondition = false;
+            } else{
+                getNextPlayer();
+                getWinner();
             }
         }
-        getNextPlayer();
         return canPlay;
     }
 
