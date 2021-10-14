@@ -133,10 +133,17 @@ public class TicTacViewController implements Initializable {
                 if (styleModel.isButtonsAreRed()){
                     btn.getStyleClass().remove("yellow");
                     btn.getStyleClass().add("red");
+                    btn.getStyleClass().remove("green");
                 }
                 if (styleModel.isButtonsAreYellow()){
                     btn.getStyleClass().add("yellow");
                     btn.getStyleClass().remove("red");
+                    btn.getStyleClass().remove("green");
+                }
+                if(styleModel.isButtonsAreGreen()){
+                    btn.getStyleClass().remove("yellow");
+                    btn.getStyleClass().remove("red");
+                    btn.getStyleClass().add("green");
                 }
 
 

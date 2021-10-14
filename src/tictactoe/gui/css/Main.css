@@ -18,7 +18,7 @@ and open the template in the editor.
 .test{
     -fx-font-size: 2em;
     -fx-text-alignment: center;
-    -fx-background-color: green;
+    -fx-background-color: #6a4940;
     -fx-width: 1px;
 }
 .red{
@@ -27,6 +27,9 @@ and open the template in the editor.
 .yellow{
     -fx-text-fill: yellow;
 }
-#test1{
-    -fx-text-fill: red;
+.green{
+    -fx-text-fill: green;
+}
+#ShopBackground{
+    -fx-background-color: black;
 }

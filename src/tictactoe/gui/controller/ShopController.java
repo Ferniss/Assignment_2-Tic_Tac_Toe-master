@@ -16,23 +16,29 @@ public class ShopController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        System.out.println("cmon");
+
 
     }
-    public void click(ActionEvent actionEvent) {
-        System.out.println("hej");
+    public void clickRed(ActionEvent actionEvent) {
         styleModel1.setButtonsAreYellow(false);
+        styleModel1.setButtonsAreGreen(false);
         styleModel1.setButtonsAreRed(true);
-        //btn.getStyleClass().add("red");
 
             }
     public void clickYellow(ActionEvent actionEvent) {
-        System.out.println("hej");
         styleModel1.setButtonsAreRed(false);
+        styleModel1.setButtonsAreGreen(false);
         styleModel1.setButtonsAreYellow(true);
+    }
+    public void clickGreen(ActionEvent actionEvent) {
+        styleModel1.setButtonsAreRed(false);
+        styleModel1.setButtonsAreYellow(false);
+        styleModel1.setButtonsAreGreen(true);
     }
 
     public void setStyleModel(StyleModel styleModel) {
         styleModel1 = styleModel;
     }
+
+
 }

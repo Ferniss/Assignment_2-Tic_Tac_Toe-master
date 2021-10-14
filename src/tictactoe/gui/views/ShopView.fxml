@@ -9,7 +9,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
+<AnchorPane fx:id="ShopBackground" xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="tictactoe.gui.controller.ShopController"
             prefHeight="400.0" prefWidth="600.0"
@@ -17,25 +17,25 @@
 
 
         <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-            <Label fx:id="test1" text="X - Red">
+            <Label styleClass="red" text="Skin - Red">
                 <VBox.margin>
                     <Insets top="20.0" />
                 </VBox.margin>
             </Label>
-            <Button fx:id="click" onAction="#click">Buy: 2 points</Button>
-            <Label fx:id="test2" text="O - Red">
+            <Button fx:id="clickRed" onAction="#clickRed">Buy: 2 points</Button>
+            <Label styleClass="yellow" text="Skin - Yellow">
                 <VBox.margin>
                     <Insets top="20.0" />
                 </VBox.margin>
             </Label>
             <Button fx:id="clickYellow" onAction="#clickYellow">Buy: 2 points</Button>
-            <Label fx:id="test3" text="X - Yellow">
+            <Label styleClass="green" text="Skin - Green">
                 <VBox.margin>
                     <Insets top="20.0" />
                 </VBox.margin>
             </Label>
-            <Button>Buy: 2 points</Button>
-            <Label fx:id="test4" text="O - Yellow">
+            <Button fx:id="clickGreen" onAction="#clickGreen" >Buy: 2 points</Button>
+            <Label fx:id="clickGren" text="O - Yellow">
                 <VBox.margin>
                     <Insets top="20.0" />
                 </VBox.margin>
