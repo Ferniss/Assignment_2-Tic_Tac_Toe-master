@@ -10,20 +10,17 @@ import tictactoe.gui.model.ScoreModel;
 public class GameBoardSinglePlayer implements IGameModel {
     private ScoreModel scoreModel = new ScoreModel();
     int counterGameOver = 0;
-    int playerTurn = 1; //makeing a int variable that defines the players turn
+    int playerTurn = -1; //makeing a int variable that defines the players turn
     int[][] grid = new int[3][3]; //Makeing an 2d array variable called grid
     int winner; //makeing a winner variable
-
-    @Override
-    public int getScoreSinglePlayer1() {
-        return scoreSinglePlayer1;
-    }
+    boolean canPlay;
 
     public int getLevelSinglePlayer1() {
         return levelSinglePlayer1;
     }
+
+
     public int levelSinglePlayer1 = 0;
-    public int scoreSinglePlayer1 = 0;
     protected GameBoardSinglePlayer() {
 
     }
@@ -56,17 +53,14 @@ public class GameBoardSinglePlayer implements IGameModel {
         //TODO Implement this method
         int AICol, AIRow;
         boolean whileCondition = true;
-        boolean canPlay;
         if (grid[col][row] == 0 && !isGameOver()) {
             grid[col][row] = 1;
             counterGameOver++;
-            getNextPlayer();
             canPlay = true;
         } else {
-            getNextPlayer();
             canPlay = false;
-
         }
+        getNextPlayer();
         while (whileCondition && canPlay && !isGameOver() ) {
             Random randInt = new Random();
             AICol = randInt.nextInt(3);
@@ -92,73 +86,41 @@ public class GameBoardSinglePlayer implements IGameModel {
     @Override
     public boolean isGameOver() {
         //TODO Implement this method
-        if (grid[0][0] == playerTurn && grid[1][1] == playerTurn && grid[2][2] == playerTurn ) {
-            winner = playerTurn;
-            if (playerTurn == 1){
-                scoreSinglePlayer1 ++;
+        if (grid[0][0] == 1 && grid[1][1] == 1 && grid[2][2] == 1 ||
+                grid[0][0] == 1 && grid[0][1] == 1 && grid[0][2] == 1 ||
+                grid[0][2] == 1 && grid[1][1] == 1 && grid[2][0] == 1 ||
+                grid[0][0] == 1 && grid[1][0] == 1 && grid[2][0] == 1 ||
+                grid[1][0] == 1 && grid[1][1] == 1 && grid[1][2] == 1 ||
+                grid[2][0] == 1 && grid[2][1] == 1 && grid[2][2] == 1 ||
+                grid[0][1] == 1 && grid[1][1] == 1 && grid[2][1] == 1 ||
+                grid[0][2] == 1 && grid[1][2] == 1 && grid[2][2] == 1
+        ){
+            winner = 1;
+            if (winner == 1){
+                Score.getInstance().setScore(1);
                 levelSinglePlayer1 ++;
             }
             return true;
         }
-        if (grid[0][0] == playerTurn && grid[0][1] == playerTurn && grid[0][2] == playerTurn ) {
-            winner = playerTurn;
-            if (playerTurn == 1){
-                scoreSinglePlayer1 ++;
-                levelSinglePlayer1 ++;
-            }
+
+        if (grid[0][0] == 2 && grid[1][1] == 2 && grid[2][2] == 2 ||
+                grid[0][0] == 2 && grid[0][1] == 2 && grid[0][2] == 2 ||
+                grid[0][2] == 2 && grid[1][1] == 2 && grid[2][0] == 2 ||
+                grid[0][0] == 2 && grid[1][0] == 2 && grid[2][0] == 2 ||
+                grid[1][0] == 2 && grid[1][1] == 2 && grid[1][2] == 2 ||
+                grid[2][0] == 2 && grid[2][1] == 2 && grid[2][2] == 2 ||
+                grid[0][1] == 2 && grid[1][1] == 2 && grid[2][1] == 2 ||
+                grid[0][2] == 2 && grid[1][2] == 2 && grid[2][2] == 2
+        ){
+            winner = 2;
             return true;
         }
-        if (grid[0][2] == playerTurn && grid[1][1] == playerTurn && grid[2][0] == playerTurn ) {
-            winner = playerTurn;
-            if (playerTurn == 1){
-                scoreSinglePlayer1 ++;
-                levelSinglePlayer1 ++;
-            }
+
+        if (counterGameOver >= 9) {
+            winner = 0;
             return true;
         }
-        if (grid[0][0] == playerTurn && grid[1][0] == playerTurn && grid[2][0] == playerTurn ) {
-            winner = playerTurn;
-            if (playerTurn == 1){
-                scoreSinglePlayer1 ++;
-                levelSinglePlayer1 ++;
-            }
-            return true;
-        }
-        if (grid[1][0] == playerTurn && grid[1][1] == playerTurn && grid[1][2] == playerTurn) {
-            winner = playerTurn;
-            if (playerTurn == 1){
-                scoreSinglePlayer1 ++;
-                levelSinglePlayer1 ++;
-            }
-            return true;
-        }
-        if (grid[2][0] == playerTurn && grid[2][1] == playerTurn && grid[2][2] == playerTurn) {
-            winner = playerTurn;
-            if (playerTurn == 1){
-                scoreSinglePlayer1 ++;
-                levelSinglePlayer1 ++;
-            }
-            return true;
-        }
-        if (grid[0][1] == playerTurn && grid[1][1] == playerTurn && grid[2][1] == playerTurn) {
-            winner = playerTurn;
-            if (playerTurn == 1){
-                scoreSinglePlayer1 ++;
-                levelSinglePlayer1 ++;
-            }
-            return true;
-        }
-        if (grid[0][2] == playerTurn && grid[1][2] == playerTurn && grid[2][2] == playerTurn) {
-            winner = playerTurn;
-            if (playerTurn == 1){
-                scoreSinglePlayer1 ++;
-                levelSinglePlayer1 ++;
-            }
-            return true;
-        }
-        if (counterGameOver == 9){
-            return true;
-        }
+
         return false;
     }
 
@@ -170,9 +132,6 @@ public class GameBoardSinglePlayer implements IGameModel {
     @Override
     public int getWinner() {
         //TODO Implement this method
-        if(winner == playerTurn){
-        }
-
         return winner;
 
     }
@@ -216,6 +175,8 @@ public class GameBoardSinglePlayer implements IGameModel {
                 grid[i][j] = 0;
             }
         }
+
+        newGame();
         System.out.println(grid);
     }
 }

@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import tictactoe.bll.Score;
 
 import java.io.IOException;
 
@@ -26,7 +27,9 @@ public class TicTacToe extends Application
         Parent root = FXMLLoader.load(getClass().getResource("views/TicTacView.fxml"));
         
         Scene scene = new Scene(root);
-        
+
+        Score score = Score.getInstance();
+
         stage.setScene(scene);
         stage.setResizable(true);
         stage.setTitle("Tic Tac Toe");

@@ -22,31 +22,31 @@
                     <Insets top="20.0" />
                 </VBox.margin>
             </Label>
-            <Button fx:id="clickRed" onAction="#clickRed">Buy: 2 points</Button>
+            <Button fx:id="clickRedBtn" onAction="#clickRed">Buy: 2 points</Button>
             <Label styleClass="yellow" text="Skin - Yellow">
                 <VBox.margin>
                     <Insets top="20.0" />
                 </VBox.margin>
             </Label>
-            <Button fx:id="clickYellow" onAction="#clickYellow">Buy: 2 points</Button>
+            <Button fx:id="clickYellowBtn" onAction="#clickYellow">Buy: 2 points</Button>
             <Label styleClass="green" text="Skin - Green">
                 <VBox.margin>
                     <Insets top="20.0" />
                 </VBox.margin>
             </Label>
-            <Button fx:id="clickGreen" onAction="#clickGreen" >Buy: 2 points</Button>
+            <Button fx:id="clickGreenBtn" onAction="#clickGreen" >Buy: 2 points</Button>
             <Label styleClass="blue" text="skin - Blue">
                 <VBox.margin>
                     <Insets top="20.0" />
                 </VBox.margin>
             </Label>
-            <Button fx:id="clickBlue" onAction="#clickBlue">Buy: 2 points</Button>
+            <Button fx:id="clickBlueBtn" onAction="#clickBlue">Buy: 2 points</Button>
             <Label styleClass="pink" text="skin - pink">
                 <VBox.margin>
                     <Insets top="20.0" />
                 </VBox.margin>
             </Label>
-            <Button fx:id="clickPink" onAction="#clickPink">Buy: 2 points</Button>
+            <Button fx:id="clickPinkBtn" onAction="#clickPink">Buy: 2 points</Button>
         </VBox>
 
 </AnchorPane>

@@ -25,6 +25,7 @@ public class GameBoardTwoPlayer implements IGameModel {
         playerTurn = (1 == playerTurn) ? 2 : 1; //choseing between player 1 and player 2
         return playerTurn; //returning the playerTurn
     }
+
     /**
      * Attempts to let the current player play at the given coordinates. It the
      * attempt is successful the current player has ended his turn and it is the
@@ -150,14 +151,11 @@ public class GameBoardTwoPlayer implements IGameModel {
     }
 
     @Override
-    public int getScoreSinglePlayer1() {
-        return 0;
-    }
-
-    @Override
     public int getLevelSinglePlayer1() {
         return 0;
     }
+
+
 }
 
 

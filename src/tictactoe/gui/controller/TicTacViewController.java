@@ -17,6 +17,7 @@ import javafx.scene.layout.GridPane;
 import tictactoe.Models.StyleModel;
 import tictactoe.bll.GameBoardFactory;
 import tictactoe.bll.IGameModel;
+import tictactoe.bll.Score;
 import tictactoe.gui.ShopClass;
 import tictactoe.gui.model.ScoreModel;
 
@@ -71,9 +72,10 @@ public class TicTacViewController implements Initializable {
         choicePlayMode.getSelectionModel().selectLast();
         currentGameMode = choicePlayMode.getSelectionModel().getSelectedItem();
 
+
         game = GameBoardFactory.getGameModel(currentGameMode);
         setPlayer();
-        scorePl1.setText("score is" + game.getScoreSinglePlayer1());
+        scorePl1.setText("score is" + Score.getInstance().getScore());
         levelPl1.setText("level is" + game.getLevelSinglePlayer1());
     }
 
@@ -96,6 +98,10 @@ public class TicTacViewController implements Initializable {
                     int winner = game.getWinner();
                     displayWinner(winner);
                     scoreModel.setNextWinner(winner + "");
+
+                    for (Node n:gridPane.getChildren()) {
+                        n.setDisable(true);
+                    }
                 } else {
                     setPlayer();
                 }
@@ -187,6 +193,11 @@ public class TicTacViewController implements Initializable {
         }
         setPlayer();
         clearBoard();
+        for (Node n:gridPane.getChildren()) {
+            n.setDisable(false);
+        }
+        scorePl1.setText("score is" + Score.getInstance().getScore());
+        levelPl1.setText("level is" + game.getLevelSinglePlayer1());
     }
 
     /**
@@ -203,13 +214,13 @@ public class TicTacViewController implements Initializable {
      */
     private void displayWinner(int winner) {
         String message;
-        if (winner == 0) {
+        if (winner == -1) {
             message = "It's a draw :-(";
         } else {
             message = "Player " + winner + " wins!!!";
         }
         lblPlayer.setText(message);
-        scorePl1.setText("score is" + game.getScoreSinglePlayer1());
+        scorePl1.setText("score is" + Score.getInstance().getScore());
         levelPl1.setText("level is" + game.getLevelSinglePlayer1());
     }
 
@@ -224,7 +235,7 @@ public class TicTacViewController implements Initializable {
     }
 
     public void openShop(ActionEvent actionEvent) {
-        ShopClass shop = new ShopClass(styleModel);
+        ShopClass shop = new ShopClass(styleModel,game);
         shop.OpenShop();
     }
 }

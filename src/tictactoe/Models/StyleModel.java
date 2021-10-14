@@ -37,4 +37,6 @@ public class StyleModel {
 
     public boolean isButtonsArePink() {return buttonsArePink;}
     public void setButtonsArePink(boolean buttonsArePink) {this.buttonsArePink = buttonsArePink;}
+
+
 }

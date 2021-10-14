@@ -62,7 +62,5 @@ public interface IGameModel {
 
     void choicePlayMode();
 
-    int getScoreSinglePlayer1();
-
     int getLevelSinglePlayer1();
 }
