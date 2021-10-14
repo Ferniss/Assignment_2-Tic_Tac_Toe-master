@@ -74,7 +74,7 @@ public class TicTacViewController implements Initializable {
         game = GameBoardFactory.getGameModel(currentGameMode);
         setPlayer();
         scorePl1.setText("score is" + game.getScoreSinglePlayer1());
-        levelPl1.setText("level is" + game.getScoreSinglePlayer1());
+        levelPl1.setText("level is" + game.getLevelSinglePlayer1());
     }
 
     /**
@@ -134,18 +134,37 @@ public class TicTacViewController implements Initializable {
                     btn.getStyleClass().remove("yellow");
                     btn.getStyleClass().add("red");
                     btn.getStyleClass().remove("green");
+                    btn.getStyleClass().remove("blue");
+                    btn.getStyleClass().remove("pink");
                 }
                 if (styleModel.isButtonsAreYellow()){
                     btn.getStyleClass().add("yellow");
                     btn.getStyleClass().remove("red");
                     btn.getStyleClass().remove("green");
+                    btn.getStyleClass().remove("blue");
+                    btn.getStyleClass().remove("pink");
                 }
                 if(styleModel.isButtonsAreGreen()){
                     btn.getStyleClass().remove("yellow");
                     btn.getStyleClass().remove("red");
                     btn.getStyleClass().add("green");
+                    btn.getStyleClass().remove("blue");
+                    btn.getStyleClass().remove("pink");
                 }
-
+                if(styleModel.isButtonsAreBlue()){
+                    btn.getStyleClass().remove("yellow");
+                    btn.getStyleClass().remove("red");
+                    btn.getStyleClass().add("blue");
+                    btn.getStyleClass().remove("green");
+                    btn.getStyleClass().remove("pink");
+                }
+                if(styleModel.isButtonsArePink()){
+                    btn.getStyleClass().remove("yellow");
+                    btn.getStyleClass().remove("red");
+                    btn.getStyleClass().remove("blue");
+                    btn.getStyleClass().remove("green");
+                    btn.getStyleClass().add("pink");
+                }
 
             }
 
