@@ -28,7 +28,7 @@
                     <Insets top="20.0" />
                 </VBox.margin>
             </Label>
-            <Button fx:id="clickYellowBtn" onAction="#clickYellow">Buy: 2 points</Button>
+            <Button fx:id="clickYellowBtn" onAction="#clickYellow">Buy: 3 points</Button>
             <Label styleClass="green" text="Skin - Green">
                 <VBox.margin>
                     <Insets top="20.0" />
@@ -40,7 +40,7 @@
                     <Insets top="20.0" />
                 </VBox.margin>
             </Label>
-            <Button fx:id="clickBlueBtn" onAction="#clickBlue">Buy: 2 points</Button>
+            <Button fx:id="clickBlueBtn" onAction="#clickBlue">Buy: 4 points</Button>
             <Label styleClass="pink" text="skin - pink">
                 <VBox.margin>
                     <Insets top="20.0" />
